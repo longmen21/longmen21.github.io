@@ -27,6 +27,572 @@
 <a id="longmen21githubio" class="anchor" href="#longmen21githubio" aria-hidden="true"><span class="octicon octicon-link"></span></a>longmen21.github.io</h1>
 
 <p>每日 edX 心得</p>
+
+<h2>
+<a id="2015年10月9日-星期五" class="anchor" href="#2015%E5%B9%B410%E6%9C%889%E6%97%A5-%E6%98%9F%E6%9C%9F%E4%BA%94" aria-hidden="true"><span class="octicon octicon-link"></span></a>2015年10月9日 星期五</h2>
+
+<ul>
+<li>
+<p>open edX架构</p>
+
+<ul>
+<li>前端：Bourbon(CSS) Sass Backbone.js</li>
+<li>后端：Mako模板，Django</li>
+</ul>
+</li>
+<li><p>创建pycharm远程编译器
+<a href="https://github.com/edx/edx-platform/wiki/Setting-up-PyCharm-for-edX-development">https://github.com/edx/edx-platform/wiki/Setting-up-PyCharm-for-edX-development</a></p></li>
+</ul>
+
+<p>xblock id:
+9c75db1c5f144aeaba4f6a0df6776197<br>
+生成时间：前10位为unix时间，后两位不明
+1444390309852</p>
+
+<ul>
+<li><p>delete xblock (delete) 系统自带方法：
+/xblock/block-v1:dd+dd+2015_T1+type@youku+block@fed4ce3e544f4eef8b6bf57330b62886</p></li>
+<li><p>自己的方法：
+get_params
+/preview/xblock/block-v1:dd+dd+2015_T1+type@youku+block@fed4ce3e544f4eef8b6bf57330b62886/handler/get_params</p></li>
+<li><p>save xblock fields（post）
+/xblock/block-v1:dd+dd+2015_T1+type@youku+block@9c75db1c5f144aeaba4f6a0df6776197/handler/save_youku</p></li>
+<li><p>每次增删改xblock就会请求，这感觉也是一个xblock
+/xblock/container/block-v1:dd+dd+2015_T1+type@vertical+block@f89b057e8b3b42ac9e7c77a289bb4323</p></li>
+</ul>
+
+<hr>
+
+<h3>
+<a id="点击新增xblock过程" class="anchor" href="#%E7%82%B9%E5%87%BB%E6%96%B0%E5%A2%9Exblock%E8%BF%87%E7%A8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>点击新增xblock过程：</h3>
+
+<ul>
+<li>
+<p>先POST请求 /xblock/</p>
+
+<ul>
+<li>告诉xblock种类，和父Xblock的信息，比如vertical xblock
+返回生成 xblock的id，还有课程及所在单元的混合编码
+id：c9cbb9c175c24a31ab4ab0afc7de9be3</li>
+</ul>
+</li>
+<li>
+<p>用当前unix时间请求 </p>
+
+<ul>
+<li>/xblock/block-v1:dd+dd+2015_T1+type@youku+block@c9cbb9c175c24a31ab4ab0afc7de9be3/reorderable_container_child_preview?_=1444391000468
+无刷新生成页面的js代码和html</li>
+</ul>
+</li>
+<li><p>get_params /preview/xblock/block-v1:dd+dd+2015_T1+type@youku+block@c9cbb9c175c24a31ab4ab0afc7de9be3/handler/get_params
+通过xblock的id从服务器取得默认参数</p></li>
+<li>
+<p>修改xblock参数 
+携填入的参数请求 </p>
+
+<ul>
+<li>/xblock/block-v1:dd+dd+2015_T1+type@youku+block@c9cbb9c175c24a31ab4ab0afc7de9be3/handler/save_youku</li>
+</ul>
+</li>
+<li>
+<p>删除xblock </p>
+
+<ul>
+<li>请求 /xblock/block-v1:dd+dd+2015_T1+type@youku+block@c9cbb9c175c24a31ab4ab0afc7de9be3</li>
+</ul>
+</li>
+<li><p>测试
+<a href="http://wwj718.github.io/edx-development.html">http://wwj718.github.io/edx-development.html</a>
+devstack安装
+<a href="https://github.com/edx/configuration/wiki/edX-Developer-Stack">https://github.com/edx/configuration/wiki/edX-Developer-Stack</a></p></li>
+</ul>
+
+<p><a href="http://wwj718.github.io/about-XBlocks.html">http://wwj718.github.io/about-XBlocks.html</a></p>
+
+<hr>
+
+<h2>
+<a id="2015年10月11日-星期日" class="anchor" href="#2015%E5%B9%B410%E6%9C%8811%E6%97%A5-%E6%98%9F%E6%9C%9F%E6%97%A5" aria-hidden="true"><span class="octicon octicon-link"></span></a>2015年10月11日 星期日</h2>
+
+<ul>
+<li>
+<p>要看的东西很多</p>
+
+<ul>
+<li>community.edustack.org</li>
+<li>idefs.com</li>
+<li><a href="http://www.cnblogs.com/fengri/p/addlmsfield.html">http://www.cnblogs.com/fengri/p/addlmsfield.html</a></li>
+<li><a href="http://www.cnblogs.com/cardgames/">http://www.cnblogs.com/cardgames/</a></li>
+</ul>
+</li>
+<li>
+<p>今天要看的内容</p>
+
+<ul>
+<li><a href="http://wwj718.github.io/python2-python3.html">http://wwj718.github.io/python2-python3.html</a></li>
+<li>在同一台机器上安装多个版本Python</li>
+<li>使用pyenv</li>
+</ul>
+</li>
+<li>
+<p><a href="http://wwj718.github.io/django-test.html">http://wwj718.github.io/django-test.html</a></p>
+
+<ul>
+<li>
+<p>Django的单元测试</p>
+
+<ul>
+<li>编写和运行测试
+
+<ul>
+<li>待看</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a href="http://wwj718.github.io/about-XBlocks.html">http://wwj718.github.io/about-XBlocks.html</a></p></li>
+<li>
+<p>关于XBlock</p>
+
+<ul>
+<li>原有的组件称为XModule</li>
+</ul>
+</li>
+<li><p><a href="http://wwj718.github.io/edx-development.html">http://wwj718.github.io/edx-development.html</a></p></li>
+<li>edX开发相关
+
+<ul>
+<li>IDE: vim+IPython 或者 editor+IPython
+
+<ul>
+<li> 或者采用 PyCharm的 远程编辑</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>代码管理：
+
+<ul>
+<li>先建立一个分支再进行开发：git checkout -b mybranch</li>
+<li>功能尽量封装成django app，代码尽量模块化</li>
+<li>主题定制，使用theme，写一套css或者重新写一套模板，而不是修改templates</li>
+<li>不要hack edxapp的代码</li>
+</ul>
+</li>
+<li>常用工具
+
+<ul>
+<li>IPython
+
+<ul>
+<li>切换到edxapp下安装IPython</li>
+<li>执行
+
+<ul>
+<li>sudo -u www-data /edx/bin/python.edxapp ./manage.py lms --settings aws shell</li>
+<li>sudo -u www-data /edx/bin/python.edxapp ./manage.py {lms|cms} runserver 8000 --settings aws</li>
+</ul>
+</li>
+<li>然后使用django-debug-toolbar来调试</li>
+<li>django-extensions
+
+<ul>
+<li>安装</li>
+</ul>
+</li>
+<li>runserver_plus 启动测试服务
+
+<ul>
+<li>用Werkzeug 调试</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>网络相关：httpie，nethogs，iftop</li>
+<li>源码阅读：understand，Souce Insight</li>
+<li>Unix工具箱：git，tail，tmux，htop，ack，diff，grep，tar，scp,crontab </li>
+</ul>
+</li>
+</ul>
+
+<p><a href="http://wwj718.github.io/use-django-debug-toolbar-1.3.2-in-edx.html">http://wwj718.github.io/use-django-debug-toolbar-1.3.2-in-edx.html</a>
+安装配置django-debug-toolbar的步骤</p>
+
+<p><a href="http://django-debug-toolbar.readthedocs.org/en/1.3.2/installation.html">http://django-debug-toolbar.readthedocs.org/en/1.3.2/installation.html</a>
+django-debug-toolbar手册</p>
+
+<hr>
+
+<h2>
+<a id="2015年10月12日-星期一" class="anchor" href="#2015%E5%B9%B410%E6%9C%8812%E6%97%A5-%E6%98%9F%E6%9C%9F%E4%B8%80" aria-hidden="true"><span class="octicon octicon-link"></span></a>2015年10月12日 星期一</h2>
+</li>
+<li>安装devstack
+
+<ul>
+<li><a href="https://github.com/edx/configuration/wiki/edX-Developer-Stack">https://github.com/edx/configuration/wiki/edX-Developer-Stack</a></li>
+<li>devstack是一个vagrant实例</li>
+<li>需要了解：
+
+<ul>
+<li>mac os terminal的使用</li>
+<li>Vagrant使用</li>
+<li>VirtualBox Guest Additions使用NFS共享文件，需哟啊安装NFS客户端</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>安装Vagrant和VirtualBox，接着挂载box文件</p>
+
+<ul>
+<li><a href="http://docs.vagrantup.com/v2/">http://docs.vagrantup.com/v2/</a></li>
+</ul>
+</li>
+<li><p>vagrant-vbguest插件：用来自动更新box里的virtual guest additions（<a href="http://my.oschina.net/huanming/blog/215877%EF%BC%89">http://my.oschina.net/huanming/blog/215877）</a>
+可参考 github文档（<a href="https://github.com/dotless-de/vagrant-vbguest%EF%BC%89">https://github.com/dotless-de/vagrant-vbguest）</a></p></li>
+<li>先安装nfs-client(mac貌似不用)</li>
+<li>本地挂载box
+
+<ul>
+<li>vagrant --help（<a href="http://www.imooc.com/qadetail/62953%EF%BC%89">http://www.imooc.com/qadetail/62953）</a>
+</li>
+<li>vagrant box add --name cypress-devstack-local /path/of/box/file</li>
+</ul>
+</li>
+<li>
+<h2>
+<a id="启动" class="anchor" href="#%E5%90%AF%E5%8A%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>启动</h2>
+
+<p>vagrant init cypress-devstack-local</p>
+
+<ul>
+<li>vagrant up</li>
+<li>vagrant ssh登录</li>
+</ul>
+</li>
+<li><p>中文教程安装教程：<a href="http://www.cnblogs.com/cardgames/p/4206434.html">http://www.cnblogs.com/cardgames/p/4206434.html</a></p></li>
+<li><p>使用IPython</p></li>
+<li>使用django-debug-tool</li>
+<li>断点测试
+***
+## 2015年10月13日 星期二</li>
+<li>
+<p>遇到问题</p>
+
+<ul>
+<li>service supervisor restart</li>
+<li>service rabbitmq-server restart</li>
+</ul>
+</li>
+<li><p>修改django-debug-toolbar的jquery加载</p></li>
+<li>这是django内部的，首先肯定去包那里找，比如venvs下面，其次再在django相关的文件那里找
+
+<ul>
+<li>/edx/app/edxapp/venvs/edxapp/lib/python2.7/site-packages/debug_toolbar/</li>
+<li>编辑 settings.py</li>
+<li>修改该项为：  'JQUERY_URL': '<a href="http://cdn.bootcss.com/jquery/2.1.0-rc1/jquery.min.js">http://cdn.bootcss.com/jquery/2.1.0-rc1/jquery.min.js</a>',</li>
+</ul>
+</li>
+<li><p>重启devstack的 studio</p></li>
+<li>
+<p>写完了保利威视的XBlock，to-do-list:</p>
+
+<ul>
+<li>需要进一步设置断点调试</li>
+<li>找到XBlock数据存储到哪里</li>
+<li>怎么读取mysql里面的数据</li>
+<li>怎么能读取到用户的session信息</li>
+<li>看XBlock API，分析那些Scope的作用域</li>
+<li>探索XBlock不同的写法
+
+<ol>
+<li>数据请求式 -- 请求handler</li>
+<li>数据注入式 -- 注入到MAKO中（官方不推荐使用render_template）</li>
+<li>去看其他的XBlock写法 <a href="https://github.com/edx/edx-platform/wiki/List-of-XBlocks">https://github.com/edx/edx-platform/wiki/List-of-XBlocks</a>
+</li>
+</ol>
+</li>
+<li>看XBlock的调用机制 </li>
+<li>
+<p>django 调试</p>
+
+<ul>
+<li><a href="http://blog.sina.com.cn/s/blog_703fd35e0100z928.html">http://blog.sina.com.cn/s/blog_703fd35e0100z928.html</a></li>
+<li>pycharm远程调试Django
+
+<ul>
+<li><a href="http://www.68idc.cn/help/jiabenmake/python/20150125188927.html">http://www.68idc.cn/help/jiabenmake/python/20150125188927.html</a></li>
+</ul>
+</li>
+<li>使用ipdb(django自带)</li>
+</ul>
+
+<pre><code>import ipdb 
+ipdb.set_trace()
+</code></pre>
+
+<hr>
+
+<h2>
+<a id="2015年10月14日-星期三" class="anchor" href="#2015%E5%B9%B410%E6%9C%8814%E6%97%A5-%E6%98%9F%E6%9C%9F%E4%B8%89" aria-hidden="true"><span class="octicon octicon-link"></span></a>2015年10月14日 星期三</h2>
+</li>
+</ul>
+</li>
+<li>Django新手注意的10点：
+
+<ul>
+<li><a href="http://blog.csdn.net/feng88724/article/details/7401024">http://blog.csdn.net/feng88724/article/details/7401024</a></li>
+</ul>
+</li>
+<li>python的日志logging模块学习： 
+
+<ul>
+<li><a href="http://www.cnblogs.com/dkblog/archive/2011/08/26/2155018.html">http://www.cnblogs.com/dkblog/archive/2011/08/26/2155018.html</a></li>
+</ul>
+</li>
+<li>
+<p>pyenv配置及使用（<a href="http://www.codeweblog.com/%E8%AE%B0%E5%BD%95mac%E4%B8%8B%E5%AE%89%E8%A3%85pyenv%E6%97%B6%E6%89%80%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/%EF%BC%89">http://www.codeweblog.com/%E8%AE%B0%E5%BD%95mac%E4%B8%8B%E5%AE%89%E8%A3%85pyenv%E6%97%B6%E6%89%80%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/）</a></p>
+
+<ul>
+<li>需要在/User下创建 .bash_profile 文件</li>
+<li>添加内容 </li>
+</ul>
+
+<p>if which pyenv &gt; /dev/null; then eval "$(pyenv init -)"; fi
+(可选) if which pyenv-virtualenv-init &gt; /dev/null; then eval "$(pyenv virtualenv-init -)"; fi</p>
+
+<ul>
+<li>然后 source .bash_profile</li>
+<li>
+<p>更改版本使用 pyenv shell + 版本</p>
+
+<ul>
+<li>pyenv global 不管用 </li>
+</ul>
+</li>
+<li>
+<p>将XAMPP的mysql 链入/usr/bin，才能在shell里使用 mysql 命令登录数据库</p>
+
+<ul>
+<li>ln -s /Applications/XAMPP/bin/mysql /usr/bin</li>
+<li>修改mysql密码 
+
+<ul>
+<li>UPDATE user SET password=PASSWORD('root') WHERE user='root';</li>
+<li>FLUSH PRIVILEGES; </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>在pycharm里面生成venv，不用自己安装，之后在pycharm生成的venv里面安装django1.4，检测到包后再new project</p></li>
+<li>在homebrew安装了 mysql之后，解决了编译失败的问题</li>
+<li>然后安装 插件</li>
+</ul>
+</li>
+<li>
+<p>今晚找一个小的开源的基于django 1.4的应用，或者自己写一个，基于增删改查的东西</p>
+
+<ul>
+<li>试试pycharm的断点测试</li>
+<li>模板是MAKO的，学一学</li>
+<li>看看django的调试的过程
+
+<ul>
+<li>博客</li>
+</ul>
+</li>
+<li>配置djang-debug-toolbar
+
+<ul>
+<li>
+<a href="http://my.oschina.net/u/1029242/blog/150738">http://my.oschina.net/u/1029242/blog/150738</a> </li>
+<li><a href="https://github.com/robhudson/django-debug-toolbar">https://github.com/robhudson/django-debug-toolbar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>在pycharm里面配置virtualenv
+
+<ul>
+<li>在interpreter里面创建虚拟环境（找一个目录），继承父环境的包
+
+<ul>
+<li>如果没找到虚拟环境的python2.7可执行文件，就手动去虚拟环境的bin下面找python2.7</li>
+<li>然后打开，在线安装包，选择版本，或者在shell里面进入虚拟环境，手动安装包</li>
+<li>再新建django项目，选择该虚拟环境，选择MAKO(可能会自动安装包 django-mako )</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>MAKO模板
+
+<ul>
+<li><a href="http://docs.makotemplates.org/en/latest/usage.html#basic-usage">http://docs.makotemplates.org/en/latest/usage.html#basic-usage</a></li>
+</ul>
+</li>
+</ul>
+
+<hr>
+
+<h2>
+<a id="2015年10月15日-星期四" class="anchor" href="#2015%E5%B9%B410%E6%9C%8815%E6%97%A5-%E6%98%9F%E6%9C%9F%E5%9B%9B" aria-hidden="true"><span class="octicon octicon-link"></span></a>2015年10月15日 星期四</h2>
+
+<ul>
+<li>
+<p>django 1.4手记</p>
+
+<ul>
+<li>Design philosophies
+
+<ul>
+<li>
+<a href="http://django-14-tkliuxing.readthedocs.org/en/latest/misc/design-philosophies.html#dry">http://django-14-tkliuxing.readthedocs.org/en/latest/misc/design-philosophies.html#dry</a> </li>
+</ul>
+</li>
+<li>how to read django docs
+
+<ul>
+<li><a href="http://django-14-tkliuxing.readthedocs.org/en/latest/intro/whatsnext.html">http://django-14-tkliuxing.readthedocs.org/en/latest/intro/whatsnext.html</a></li>
+</ul>
+</li>
+<li>python logging模块
+
+<ul>
+<li><a href="http://www.cnblogs.com/dkblog/archive/2011/08/26/2155018.html">http://www.cnblogs.com/dkblog/archive/2011/08/26/2155018.html</a></li>
+</ul>
+</li>
+<li>手动断点 assert FALSE
+
+<ul>
+<li>assert用法
+
+<ul>
+<li>为那些还不清楚它的人，Python的assert是用来检查一个条件，如果它为真，就不做任何事。
+如果它为假，则会抛出AssertError并且包含错误信息</li>
+<li>它可以被编译好然后从来不执行，如果你用 –O 或 –oo 选项运行Python，结果不保证assert表达式会运行到。
+当适当的使用assert时，这是未来，但是当assert不恰当的使用时，它会让代码用-O执行时出错。</li>
+<li><a href="http://blog.jobbole.com/76285/">http://blog.jobbole.com/76285/</a></li>
+<li>等同于
+if <strong>debug</strong>:
+    raise AssertionError </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://stackoverflow.com/questions/1118183/how-to-debug-in-django-the-good-way">http://stackoverflow.com/questions/1118183/how-to-debug-in-django-the-good-way</a></li>
+</ul>
+</li>
+<li><p>django1.4及MAKO文档
+<a href="http://django-14-tkliuxing.readthedocs.org/en/latest/intro/tutorial02.html">http://django-14-tkliuxing.readthedocs.org/en/latest/intro/tutorial02.html</a>
+<a href="http://docs.makotemplates.org/en/latest/usage.html#basic-usage">http://docs.makotemplates.org/en/latest/usage.html#basic-usage</a></p></li>
+<li><p>PDB使用
+命令                      用途
+b                       设置断点
+c                       继续执行程序
+l                       查看当前行的代码段
+s                       进入函数
+r                       执行代码直到从当前函数返回
+q                       中止并退出
+n                       执行下一行
+pp                      打印变量的值
+help                    帮助</p></li>
+</ul>
+
+<p><a href="http://blog.csdn.net/carolzhang8406/article/details/6923997">http://blog.csdn.net/carolzhang8406/article/details/6923997</a></p>
+
+<pre><code>如果不想在函数里单步调试可以在断点出直接按r退出到调用的地方。
+在调试的时候动态改变值。
+b如果已经被赋值了，如果想重新改变b的赋值，则应该使用！b
+
+b(reak)， 设置断点，例如 “b 77″，就是在当前脚本的77行打上断点，还能输入函数名作为参数，断点就打到具体的函数入口，如果只敲b，会显示现有的全部断点 
+(Pdb) b 504
+Breakpoint 4 at /home/jchen/regression/regressionLogCMP.py:504
+
+condition bpnumber [condition]，设置条件断点，下面语句就是对第4个断点加上条件“a==3” 
+(Pdb) condition 4 a==3
+(Pdb) b
+Num Type Disp Enb Where
+4 breakpoint keep yes at /home/jchen/regression/regressionLogCMP.py:504
+stop only if a==3
+
+cl(ear)，如果后面带有参数，就是清除指定的断点（我在Python2.4上从来没成功过！！！）；如果不带参数就是清除所有的断点 
+(Pdb) cl
+Clear all breaks? y
+
+disable/enable，禁用/激活断点 
+(Pdb) disable 3
+(Pdb) b
+Num Type Disp Enb Where
+3 breakpoint keep no at /home/jchen/regression/regressionLogCMP.py:505
+
+j(ump)，让程序跳转到指定的行数 
+a(rgs)，打印当前函数的参数 
+！，感叹号后面跟着语句，可以直接改变某个变量
+使用 u 和 d 命令，我们可以在栈帧之间切换，用以获取其相关上下文变量信息。w可以显示最近的一些栈帧信息。
+
+打断点的时候不要打在函数的def处。如果这样做，import的时候会运行到这个位置，真正调用函数时却不会停住。
+import的时候会生成Python内部的运行指令，因此会运行到每个函数定义的地方。
+</code></pre>
+
+<ul>
+<li>pdb函数
+
+<ul>
+<li>pdb.run(statement[, globals[, locals]])</li>
+<li>pdb.runeval(expression[, globals[, locals]])</li>
+<li>pdb.runcall(function[, argument, ...])</li>
+<li>pdb.set_trace()</li>
+</ul>
+</li>
+</ul>
+
+<p>-find命令
+    -name   按照文件名查找文件。
+    -perm   按照文件权限来查找文件。
+    -prune  使用这一选项可以使find命令不在当前指定的目录中查找，如果同时使用-depth选项，那么-prune将被find命令忽略。
+    -user   按照文件属主来查找文件。
+    -group  按照文件所属的组来查找文件。
+    -type  查找某一类型的文件，诸如：
+        # b - 块设备文件。
+        # d - 目录。
+        # c - 字符设备文件。
+        # p - 管道文件。
+        # l - 符号链接文件。
+        # f - 普通文件。</p>
+
+<p>-mtime    -n +n                 #按文件更改时间来查找文件，-n指n天以内，+n指n天以前</p>
+
+<p>-mtime    -n +n                 #按文件更改时间来查找文件，-n指n天以内，+n指n天以前</p>
+
+<p>-atime     -n +n                #按文件访问时间来查
+找文件，-n指n天以内，+n指n天以前 </p>
+
+<p>-ctime     -n +n                #按文件创建时间来查找文件，-n指n天以内，+n指n天以前 </p>
+
+<pre><code>find    /home    -mtime    -2                   在/home下查最近两天内改动过的文件
+
+***
+</code></pre>
+
+<h2>
+<a id="2015年10月16日-星期六" class="anchor" href="#2015%E5%B9%B410%E6%9C%8816%E6%97%A5-%E6%98%9F%E6%9C%9F%E5%85%AD" aria-hidden="true"><span class="octicon octicon-link"></span></a>2015年10月16日 星期六</h2>
+
+<ul>
+<li>
+<p>过两天折腾github博客</p>
+
+<ul>
+<li>simple: <a href="http://isnowfy.github.io/about-simple-cn.html">http://isnowfy.github.io/about-simple-cn.html</a>
+</li>
+<li>heox: <a href="http://blog.csdn.net/poem_of_sunshine/article/details/29369785/">http://blog.csdn.net/poem_of_sunshine/article/details/29369785/</a>
+</li>
+<li>jekyll: <a href="http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html">http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html</a>
+</li>
+<li><a href="http://www.zhihu.com/question/20962496">http://www.zhihu.com/question/20962496</a></li>
+</ul>
+</li>
+<li><p>单元测试过后再看</p></li>
+</ul>
       </section>
       <footer>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
